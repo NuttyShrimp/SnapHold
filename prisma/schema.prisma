@@ -16,6 +16,10 @@ datasource db {
 model User {
   id       String    @id
   sessions Session[]
+  name     String
+  oauthId  String    @db.VarChar(255)
+
+  @@map("users")
 }
 
 model Session {
@@ -23,4 +27,6 @@ model Session {
   userId    String
   expiresAt DateTime
   user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+
+  @@map("sessions")
 }
