@@ -27,6 +27,7 @@ export default defineEventHandler(async (event) => {
     const existingUser = await prisma.user.findFirst({
       where: {
         oauthId: String(user.sub),
+        oauthProvider: "google"
       }
     })
 
@@ -37,12 +38,12 @@ export default defineEventHandler(async (event) => {
     }
 
     const userId = generateId(15);
-    console.log(`Username: ${user.name}`)
     await prisma.user.create({
       data: {
         id: userId,
         oauthId: user.sub,
         name: user.name,
+        oauthProvider: "google"
       }
     });
     const session = await lucia.createSession(userId, {});

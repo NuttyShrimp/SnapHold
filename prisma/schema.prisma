@@ -14,10 +14,14 @@ datasource db {
 }
 
 model User {
-  id       String    @id
-  sessions Session[]
-  name     String
-  oauthId  String    @db.VarChar(255)
+  id            String    @id
+  sessions      Session[]
+  name          String
+  oauthId       String    @db.VarChar(255)
+  // This will make for duplicate accounts, but it's fine for now (AFAIK only I have a 12ul + zauth acc)
+  oauthProvider String    @db.VarChar(255)
+  admin         Boolean   @default(false)
+  Photo         Photo[]
 
   @@map("users")
 }
@@ -29,4 +33,26 @@ model Session {
   user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
 
   @@map("sessions")
+}
+
+model Event {
+  id         Int      @id @default(autoincrement())
+  name       String
+  startAt    DateTime
+  endAt      DateTime
+  photos     Photo[]
+  photoLimit Int      @default(25)
+
+  @@map("events")
+}
+
+model Photo {
+  id       Int    @id @default(autoincrement())
+  url      String
+  user_id  String
+  event_id Int
+  event    Event  @relation(fields: [event_id], references: [id])
+  user     User   @relation(fields: [user_id], references: [id])
+
+  @@map("photos")
 }

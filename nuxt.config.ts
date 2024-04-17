@@ -11,7 +11,8 @@ export default defineNuxtConfig({
     googleRedirectURI: process.env.GOOGLE_REDIRECT_URI,
   },
   devtools: { enabled: true },
-  modules: ['@vite-pwa/nuxt', "@nuxt/ui"],
-  pwa: {
+  modules: ['@vite-pwa/nuxt', "@nuxt/ui", "nuxt-security", "dayjs-nuxt"],
+  dayjs: {
+    plugins: ['utc', 'timezone', 'relativeTime'],
   }
 })
