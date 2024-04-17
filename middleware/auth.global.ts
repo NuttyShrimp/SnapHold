@@ -4,7 +4,5 @@ export default defineNuxtRouteMiddleware(async (to) => {
 
   if (data) {
     user.value = data.value;
-  } else if (to.path !== "/login") {
-    return navigateTo("/login");
   }
 });

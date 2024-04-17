@@ -2,6 +2,11 @@
 definePageMeta({
   layout: false
 })
+
+const handleGoogleLogin = () => {
+  navigateTo("/login/google");
+}
+
 </script>
 <template>
   <div class="flex justify-center">
@@ -9,6 +14,6 @@ definePageMeta({
   </div>
   <div class="flex h-[80%] items-end justify-center not-prose">
     <UButton icon="i-devicon-plain-google" size="lg" color="primary" variant="solid" label="Login with google"
-      :trailing="false" to="/login/google" />
+      :trailing="false" @click="handleGoogleLogin" />
   </div>
 </template>

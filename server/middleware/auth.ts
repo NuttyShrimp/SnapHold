@@ -16,6 +16,10 @@ export default defineEventHandler(async (event) => {
   if (!sessionId) {
     event.context.session = null;
     event.context.user = null;
+    deleteCookie(event, lucia.sessionCookieName);
+    if (!event.path.startsWith("/login")) {
+      return sendRedirect(event, "/login")
+    }
     return;
   }
 

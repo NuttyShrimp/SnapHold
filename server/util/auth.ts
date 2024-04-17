@@ -10,12 +10,14 @@ export const lucia = new Lucia(adapter, {
   sessionCookie: {
     attributes: {
       secure: !import.meta.dev
-    }
+    },
+    name: "POV-session"
   },
   getUserAttributes: (attributes) => {
     return {
       name: attributes.name,
       oauthId: attributes.oauthId,
+      admin: attributes.admin,
     };
   }
 });
