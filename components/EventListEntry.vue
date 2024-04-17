@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import type { Event, Photo } from "@prisma/client";
 
-defineProps<{ event: (Event & { photos: Photo[] }) }>()
+defineProps<{ event: (Event & { photos: Photo[] }); showPreview?: boolean }>()
 
 const timeInfoClass = 'text-sm text-gray-500'
 </script>
 <template>
   <NuxtLink :to="`/events/${event.id}`" class="not-prose">
     <div class="flex flex-row items-center">
-      <div class="object-contain h-20 w-12 rounded-lg flex items-center justify-center">
-        <img v-if="event.photos.length > 0" :src="event.photos[0].url" />
+      <div class="h-20 w-12 rounded-lg flex items-center justify-center overflow-hidden">
+        <NuxtImg v-if="event.photos.length > 0 && showPreview" :src="event.photos[0].url"
+          class="object-contain h-20 w-12" />
         <div v-else class="text-3xl">
           <UIcon name="i-heroicons-camera" />
         </div>

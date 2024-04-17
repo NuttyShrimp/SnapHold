@@ -11,20 +11,22 @@ definePageMeta({
 })
 </script>
 <template>
-  <h2 class="text-center mt-0">Events</h2>
-  <div v-if="pending" class="flex flex-col justify-center items-center h-full">
-    <p class="text-center">Loading...</p>
-    <UProgress animation="carousel" />
-  </div>
-  <div v-else-if="error">{{ error }}</div>
-  <div v-else>
-    <h4 class="text-gray-600 dark:text-gray-400">Currently Active</h4>
-    <div v-for="event in activeEvents">
-      <EventListEntry :key="event.id" :event="event" />
+  <div class="p-4">
+    <h2 class="text-center mt-0">Events</h2>
+    <div v-if="pending" class="flex flex-col justify-center items-center h-full">
+      <p class="text-center">Loading...</p>
+      <UProgress animation="carousel" />
     </div>
-    <h4 class="text-gray-600 dark:text-gray-400">Past events</h4>
-    <div v-for="event in endedEvents">
-      <EventListEntry :key="event.id" :event="event" />
+    <div v-else-if="error">{{ error }}</div>
+    <div v-else>
+      <h4 class="text-gray-600 dark:text-gray-400">Currently Active</h4>
+      <div v-for="event in activeEvents">
+        <EventListEntry :key="event.id" :event="event" />
+      </div>
+      <h4 class="text-gray-600 dark:text-gray-400">Past events</h4>
+      <div v-for="event in endedEvents">
+        <EventListEntry :key="event.id" :event="event" showPreview />
+      </div>
     </div>
   </div>
 </template>
