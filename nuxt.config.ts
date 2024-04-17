@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   app: {
     head: {
-      title: "POV - 12urenloop"
+      title: "SnapHold - 12urenloop"
     },
   },
   runtimeConfig: {

@@ -11,7 +11,7 @@ export const lucia = new Lucia(adapter, {
     attributes: {
       secure: !import.meta.dev
     },
-    name: "POV-session"
+    name: "SnapHold-session"
   },
   getUserAttributes: (attributes) => {
     return {

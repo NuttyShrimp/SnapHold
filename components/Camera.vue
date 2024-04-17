@@ -7,7 +7,7 @@ const shutter = ref<HTMLDivElement | null>(null);
 
 const preferredCameraLabels = ['back', 'usb']
 const imageType = 'image/jpeg';
-const deviceStorageToken = '_pov_device_id'
+const deviceStorageToken = '_snaphold_device_id'
 
 const deviceId = ref<ConstrainDOMString | null>(null);
 const cameras = reactive<MediaDeviceInfo[]>([]);
