@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const emit = defineEmits(['start', 'error', 'unsupported', 'init', 'photoTaken']);
+const emit = defineEmits(['start', "stop", 'error', 'unsupported', 'photoTaken']);
 
 const video = ref<HTMLVideoElement | null>(null)
 const canvas = ref<HTMLCanvasElement | null>(null);
@@ -14,7 +14,7 @@ const cameras = reactive<MediaDeviceInfo[]>([]);
 const inited = ref(false);
 
 const buildConstraints = (deviceId?: ConstrainDOMString) => {
-  const c: MediaStreamConstraints = { video: { width: { ideal: 2560 }, height: { ideal: 1440 }, facingMode: "environment" }, audio: false };
+  const c: MediaStreamConstraints = { video: { facingMode: "environment" }, audio: false };
   if (deviceId) {
     if (typeof c.video !== 'object' || c.video === null) {
       c.video = {}
@@ -40,7 +40,6 @@ const loadCameras = () => {
         if (deviceId.value === null) {
           start();
         }
-        emit('init', deviceId)
         inited.value = true;
       }
     })
@@ -139,6 +138,7 @@ const stop = () => {
   if (video.value?.srcObject) {
     clear(video.value);
   }
+  emit('stop');
 }
 
 const changeCamera = (newdeviceId: ConstrainDOMString) => {
@@ -148,7 +148,7 @@ const changeCamera = (newdeviceId: ConstrainDOMString) => {
   }
   stop();
   if (newdeviceId) {
-    loadCamera(newdeviceId);
+    start();
   }
 }
 
@@ -186,7 +186,7 @@ onMounted(() => {
   setupMedia();
 });
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
   stop();
 })
 

@@ -1,5 +1,6 @@
 import { prisma } from "~/server/util/db";
 import { generateFileUUID, storePhoto } from "~/server/util/minio";
+import { getPhotoCountLeftForUser } from "~/server/util/repository";
 
 export default defineEventHandler(async (event) => {
   if (!event.context.user?.id) {
@@ -20,7 +21,12 @@ export default defineEventHandler(async (event) => {
       statusMessage: "Event ID must be a integer",
     })
   }
-  
+
+  const photosLeft = await getPhotoCountLeftForUser(event.context.user.id, Number(id));
+  if (photosLeft <= 0) {
+    return createError({ status: 400, statusMessage: "You have no photos left" })
+  }
+
   const files = await readMultipartFormData(event);
   if (files?.length === 0) {
     return createError({ status: 400, statusMessage: "No files found" });
