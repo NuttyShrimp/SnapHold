@@ -3,10 +3,17 @@ definePageMeta({
   layout: false
 })
 
+const user = useUser();
+
 const handleGoogleLogin = () => {
   navigateTo("/login/google");
 }
 
+onMounted(() => {
+  if (user.value) {
+    navigateTo("/")
+  }
+})
 </script>
 <template>
   <div class="flex justify-center">
