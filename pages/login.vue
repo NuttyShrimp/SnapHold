@@ -6,11 +6,13 @@ definePageMeta({
 const user = useUser();
 
 const handleGoogleLogin = () => {
-  navigateTo("/login/google");
+  navigateTo("/login/google", {
+    external: true
+  });
 }
 
 onMounted(() => {
-  if (user.value) {
+  if (user.value && user.value !== "") {
     navigateTo("/")
   }
 })
