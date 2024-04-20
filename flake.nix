@@ -21,7 +21,7 @@
       in
       with pkgs; {
         devShells.default = pkgs.devshell.mkShell {
-          packages = [ nodejs nodePackages.pnpm nodePackages.prisma postgresql_16 redis ];
+          packages = [ nodejs nodePackages.pnpm nodePackages.yarn postgresql_16 redis ];
           commands = [
             {
               name = "pg:setup";

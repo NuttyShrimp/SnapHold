@@ -5,6 +5,11 @@ export default defineNuxtConfig({
       title: "SnapHold - 12urenloop"
     },
   },
+  // nitro: {
+  // externals: {
+  //   traceInclude: ["node_modules/@prisma/client"]
+  // },
+  // },
   runtimeConfig: {
     googleClientId: process.env.GOOGLE_CLIENT_ID,
     googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
