@@ -76,7 +76,7 @@ const handleCameraStop = () => {
       </div>
       <div class="flex-1 flex justify-center">
         <div class="h-16 w-16 rounded-full bg-white cursor-pointer"
-          :class="{ 'bg-cool-400 cursor-wait': !data || pending || !cameraLoaded }" @click="handleTakePhoto"></div>
+          :class="{ '!bg-cool-400 cursor-wait': !data || pending || !cameraLoaded }" @click="handleTakePhoto"></div>
       </div>
       <div class="flex-1">
       </div>
