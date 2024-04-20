@@ -7,13 +7,14 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
+    "postinstall": "nuxt prepare && prisma generate",
     "preview:build": "pnpm build && node .output/server/index.mjs"
   },
   "dependencies": {
     "@lucia-auth/adapter-prisma": "^4.0.1",
     "@nuxt/image": "^1.5.0",
     "@nuxt/ui": "^2.15.2",
+    "@prisma/client": "^5.12.1",
     "@types/uuid": "^9.0.8",
     "@vite-pwa/nuxt": "^0.6.0",
     "arctic": "^1.5.0",
@@ -29,7 +30,6 @@
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
-    "@prisma/client": "^5.12.1",
     "prisma": "^5.12.1",
     "tsx": "^4.7.2"
   },
