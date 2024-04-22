@@ -58,8 +58,10 @@ const handleCameraStop = () => {
       </div>
     </div>
     <div class="flex flex-1 items-center justify-center ">
-      <Camera ref="camera" @unsupported="handleUnsupported" @error="handleCamError" @photo-taken="handlePhotoTaken"
-        @start="handleCameraStart" @stop="handleCameraStop" />
+      <ClientOnly fallback-tag="span" fallback="Loading the camera...">
+        <Camera ref="camera" @unsupported="handleUnsupported" @error="handleCamError" @photo-taken="handlePhotoTaken"
+          @start="handleCameraStart" @stop="handleCameraStop" />
+      </ClientOnly>
     </div>
     <div class="flex flex-row z-10 w-full items-center rounded-t bg-cool-800 p-2">
       <div class="flex-1 pl-2">
