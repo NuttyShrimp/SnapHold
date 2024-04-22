@@ -55,6 +55,9 @@ const loadCamera = (deviceId: ConstrainDOMString) => {
         return;
       };
       video.value.srcObject = stream
+      video.value.onloadedmetadata = function (e) {
+        cameraView.play()
+      }
 
       window.localStorage.setItem(deviceStorageToken, deviceId.toString())
     })
@@ -202,7 +205,7 @@ defineExpose({
 <template>
   <div class="not-prose">
 
-    <video v-if="deviceId" ref="video" class="w-full object-contain" autoplay />
+    <video v-if="deviceId" ref="video" class="w-full object-contain" autoplay muted playsinline />
     <div v-else>
       <USkeleton class="w-[95vw] h-[85svh]" />
     </div>

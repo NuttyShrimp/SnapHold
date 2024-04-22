@@ -33,6 +33,7 @@ export default defineNuxtConfig({
       name: 'SnapHold',
       short_name: 'SnapHold',
       theme_color: '#ffffff',
+      display: "standalone",
       icons: [
         {
           src: 'pwa-192x192.png',
