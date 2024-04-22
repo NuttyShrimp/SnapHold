@@ -19,7 +19,7 @@ export default defineNuxtConfig({
     minioBucket: process.env.MINIO_BUCKET,
   },
   devtools: { enabled: true },
-  modules: ['@vite-pwa/nuxt', "@nuxt/ui", "nuxt-security", "dayjs-nuxt", "@nuxt/image"],
+  modules: ['@vite-pwa/nuxt', "@nuxt/ui", "dayjs-nuxt", "@nuxt/image"],
   dayjs: {
     plugins: ['utc', 'timezone', 'relativeTime'],
   },

@@ -57,13 +57,11 @@ const handleCameraStop = () => {
         <UButton icon="i-fa6-solid-camera-rotate" variant="soft" size="sm" square @click="camera?.rotateCamera" />
       </div>
     </div>
-    <div class="flex flex-1 items-center justify-center ">
-      <ClientOnly fallback-tag="span" fallback="Loading the camera...">
-        <Camera ref="camera" @unsupported="handleUnsupported" @error="handleCamError" @photo-taken="handlePhotoTaken"
-          @start="handleCameraStart" @stop="handleCameraStop" />
-      </ClientOnly>
+    <div class="flex items-center justify-center h-[90%]">
+      <Camera ref="camera" @unsupported="handleUnsupported" @error="handleCamError" @photo-taken="handlePhotoTaken"
+        @start="handleCameraStart" @stop="handleCameraStop" />
     </div>
-    <div class="flex flex-row z-10 w-full items-center rounded-t bg-cool-800 p-2">
+    <div class="flex flex-row z-10 w-full items-center rounded-t bg-cool-800 p-2 absolute bottom-0">
       <div class="flex-1 pl-2">
         <div class="w-20" v-if="data === undefined || pending">
           <UProgress animation="carousel" />
