@@ -33,7 +33,7 @@ export const generateFileUUID = async () => {
 }
 
 export const storePhoto = async (uuid: string, data: Buffer) => {
-  await minioClient.putObject(config.minioBucket, `${uuid}.jpgshowPreview`, data, {
+  await minioClient.putObject(config.minioBucket, `${uuid}.jpg`, data, {
     'Content-Type': 'image/jpeg',
   });
 }
