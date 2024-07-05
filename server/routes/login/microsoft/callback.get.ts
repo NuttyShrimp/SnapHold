@@ -1,6 +1,6 @@
 import { OAuth2RequestError } from "arctic";
 import { generateId } from "lucia";
-import { google, lucia } from "~/server/util/auth";
+import { lucia, microsoft } from "~/server/util/auth";
 import { prisma } from "~/server/util/db";
 
 export default defineEventHandler(async (event) => {
@@ -16,20 +16,21 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
-    const tokens = await google.validateAuthorizationCode(code, storedCodeVerifier);
-    const googleUserRes = await fetch("https://openidconnect.googleapis.com/v1/userinfo", {
+    const tokens = await microsoft.validateAuthorizationCode(code, storedCodeVerifier);
+    const microsoftUserRes = await fetch("https://graph.microsoft.com/oidc/userinfo", {
       headers: {
         Authorization: `Bearer ${tokens.accessToken}`
       }
     });
-    const user: GoogleUser = await googleUserRes.json();
+    const user: MicrosoftUser = await microsoftUserRes.json();
 
     const existingOAuthUser = await prisma.oAuthUser.findFirst({
       where: {
         oauthId: String(user.sub),
-        oauthProvider: "google"
+        oauthProvider: "microsoft"
       }
     })
+
     if (existingOAuthUser) {
       const session = await lucia.createSession(existingOAuthUser.user_id, {});
       appendHeader(event, "Set-Cookie", lucia.createSessionCookie(session.id).serialize());
@@ -49,7 +50,7 @@ export default defineEventHandler(async (event) => {
         data: {
           user_id: existingUser.id,
           oauthId: user.sub,
-          oauthProvider: "google"
+          oauthProvider: "microsoft"
         }
       });
       const session = await lucia.createSession(existingUser.id, {});
@@ -65,7 +66,7 @@ export default defineEventHandler(async (event) => {
         OAuthUser: {
           create: {
             oauthId: user.sub,
-            oauthProvider: "google"
+            oauthProvider: "microsoft"
           }
         }
       }
@@ -87,8 +88,9 @@ export default defineEventHandler(async (event) => {
   }
 });
 
-interface GoogleUser {
-  email: string;
-  sub: string;
-  name: string;
+interface MicrosoftUser {
+  sub: string,
+  name: string,
+  family_name: string,
+  given_name: string,
 }

@@ -2,7 +2,7 @@ import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
 import { Lucia } from "lucia";
 import { prisma } from "./db";
 import { User } from "@prisma/client";
-import { Google } from "arctic";
+import { Google, MicrosoftEntraId } from "arctic";
 
 const adapter = new PrismaAdapter(prisma.session, prisma.user);
 
@@ -31,4 +31,5 @@ declare module "lucia" {
 
 const config = useRuntimeConfig();
 
-export const google = new Google(config.googleClientId, config.googleClientSecret, config.googleRedirectURI);
+export const google = new Google(config.googleClientId, config.googleClientSecret, `${config.authRedirectUri}/google/callback`);
+export const microsoft = new MicrosoftEntraId(config.microsoftTenantId, config.microsoftClientId, config.microsoftClientSecret, `${config.authRedirectUri}/microsoft/callback`);

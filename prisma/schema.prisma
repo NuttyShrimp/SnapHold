@@ -19,16 +19,24 @@ datasource db {
 }
 
 model User {
-  id            String    @id
-  sessions      Session[]
-  name          String
-  oauthId       String    @db.VarChar(255)
-  // This will make for duplicate accounts, but it's fine for now (AFAIK only I have a 12ul + zauth acc)
-  oauthProvider String    @db.VarChar(255)
-  admin         Boolean   @default(false)
-  Photo         Photo[]
+  id        String      @id
+  sessions  Session[]
+  name      String
+  admin     Boolean     @default(false)
+  Photo     Photo[]
+  OAuthUser OAuthUser[]
 
   @@map("users")
+}
+
+model OAuthUser {
+  user_id       String
+  oauthId       String @db.VarChar(255)
+  oauthProvider String @db.VarChar(255)
+  user          User   @relation(fields: [user_id], references: [id])
+
+  @@id([user_id, oauthProvider])
+  @@map("oauth_users")
 }
 
 model Session {

@@ -5,27 +5,35 @@ export default defineNuxtConfig({
       title: "SnapHold - 12urenloop"
     },
   },
+
   // nitro: {
   // externals: {
   //   traceInclude: ["node_modules/@prisma/client"]
   // },
   // },
   runtimeConfig: {
+    authRedirectUri: process.env.AUTH_REDIRECT_URI,
     googleClientId: process.env.GOOGLE_CLIENT_ID,
     googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    googleRedirectURI: process.env.GOOGLE_REDIRECT_URI,
+    microsoftClientId: process.env.MICROSOFT_CLIENT_ID,
+    microsoftClientSecret: process.env.MICROSOFT_CLIENT_SECRET,
+    microsoftTenantId: process.env.MICROSOFT_TENANT_ID,
     minioAccessKey: process.env.MINIO_ACCESS_KEY,
     minioSecretKey: process.env.MINIO_SECRET_KEY,
     minioBucket: process.env.MINIO_BUCKET,
   },
+
   devtools: { enabled: true },
   modules: ['@vite-pwa/nuxt', "@nuxt/ui", "dayjs-nuxt", "@nuxt/image"],
+
   dayjs: {
     plugins: ['utc', 'timezone', 'relativeTime'],
   },
+
   image: {
     domains: ["minioserver.nuttyshrimp.me"]
   },
+
   pwa: {
     strategies: 'generateSW',
     registerType: 'autoUpdate',
@@ -70,4 +78,6 @@ export default defineNuxtConfig({
       type: 'module',
     },
   },
+
+  compatibilityDate: '2024-07-06',
 })
