@@ -13,28 +13,27 @@
   },
   "dependencies": {
     "@lucia-auth/adapter-prisma": "^4.0.1",
-    "@nuxt/image": "^1.5.0",
-    "@nuxt/ui": "^2.15.2",
-    "@prisma/client": "^5.12.1",
-    "@types/uuid": "^9.0.8",
-    "@vite-pwa/nuxt": "^0.6.0",
-    "arctic": "^1.5.0",
-    "dayjs": "^1.11.10",
+    "@nuxt/image": "^1.7.0",
+    "@nuxt/ui": "^2.17.0",
+    "@prisma/client": "5.12.1",
+    "@types/uuid": "^10.0.0",
+    "@vite-pwa/nuxt": "^0.9.0",
+    "arctic": "^1.9.1",
+    "dayjs": "^1.11.11",
     "dayjs-nuxt": "^2.1.9",
-    "lucia": "^3.1.1",
-    "minio": "^7.1.3",
-    "nuxt": "^3.11.2",
-    "nuxt-security": "^1.3.2",
-    "oslo": "^1.2.0",
-    "uuid": "^9.0.1",
-    "vue": "^3.4.21",
-    "vue-router": "^4.3.0",
+    "lucia": "^3.2.0",
+    "minio": "^8.0.1",
+    "oslo": "^1.2.1",
+    "uuid": "^10.0.0",
+    "vue": "^3.4.31",
+    "vue-router": "^4.4.0",
     "webrtc-adapter": "^9.0.1",
-    "zod": "^3.22.5"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "prisma": "^5.12.1",
-    "tsx": "^4.7.2"
+    "nuxt": "^3.12.3",
+    "prisma": "5.12.1",
+    "tsx": "^4.16.2"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
