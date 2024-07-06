@@ -1,27 +1,26 @@
-FROM node:20-alpine AS base
-
-WORKDIR /src
-
-COPY --link package.json yarn.lock .
+FROM node:20-slim AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+COPY . /app
+WORKDIR /app
 
 FROM base AS builder
 
-RUN yarn install --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
-COPY . .
+RUN pnpm prisma generate
 
-RUN yarn prisma generate
-
-RUN yarn run build
+RUN pnpm run build
 
 FROM base
 
 ENV NODE_ENV=production
 
-COPY --from=builder /src/.output /src/.output
-COPY --from=builder /src/.nuxt /src/.nuxt
-COPY --from=builder /src/prisma /src/prisma
+COPY --from=builder /app/.output /src/.output
+COPY --from=builder /app/.nuxt /src/.nuxt
+COPY --from=builder /app/prisma /src/prisma
 
 RUN yarn global add prisma
 
-CMD [ "yarn", "start"]
+CMD [ "pnpm", "start"]
