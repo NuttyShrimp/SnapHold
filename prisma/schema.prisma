@@ -60,12 +60,13 @@ model Event {
 }
 
 model Photo {
-  id       Int    @id @default(autoincrement())
-  url      String
-  user_id  String
-  event_id Int
-  event    Event  @relation(fields: [event_id], references: [id])
-  user     User   @relation(fields: [user_id], references: [id])
+  id         Int      @id @default(autoincrement())
+  url        String
+  user_id    String
+  event_id   Int
+  created_at DateTime @default(now())
+  event      Event    @relation(fields: [event_id], references: [id])
+  user       User     @relation(fields: [user_id], references: [id])
 
   @@map("photos")
 }
