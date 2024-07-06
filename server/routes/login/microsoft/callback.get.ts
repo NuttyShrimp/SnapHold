@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
 
   try {
     const tokens = await microsoft.validateAuthorizationCode(code, storedCodeVerifier);
-    const microsoftUserRes = await fetch("https://graph.microsoft.com/oidc/userinfo", {
+    const microsoftUserRes = await fetch("https://graph.microsoft.com/v1.0/me", {
       headers: {
         Authorization: `Bearer ${tokens.accessToken}`
       }
@@ -26,7 +26,7 @@ export default defineEventHandler(async (event) => {
 
     const existingOAuthUser = await prisma.oAuthUser.findFirst({
       where: {
-        oauthId: String(user.sub),
+        oauthId: user.id,
         oauthProvider: "microsoft"
       }
     })
@@ -40,7 +40,7 @@ export default defineEventHandler(async (event) => {
     const existingUser = await prisma.user.findFirst({
       where: {
         name: {
-          equals: user.name,
+          equals: user.displayName,
           mode: "insensitive"
         }
       }
@@ -49,7 +49,7 @@ export default defineEventHandler(async (event) => {
       await prisma.oAuthUser.create({
         data: {
           user_id: existingUser.id,
-          oauthId: user.sub,
+          oauthId: user.id,
           oauthProvider: "microsoft"
         }
       });
@@ -62,10 +62,10 @@ export default defineEventHandler(async (event) => {
     await prisma.user.create({
       data: {
         id: userId,
-        name: user.name,
+        name: user.displayName,
         OAuthUser: {
           create: {
-            oauthId: user.sub,
+            oauthId: user.id,
             oauthProvider: "microsoft"
           }
         }
@@ -89,8 +89,6 @@ export default defineEventHandler(async (event) => {
 });
 
 interface MicrosoftUser {
-  sub: string,
-  name: string,
-  family_name: string,
-  given_name: string,
+  displayName: string,
+  id: string,
 }
