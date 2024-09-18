@@ -2,10 +2,6 @@
 const route = useRoute();
 const { data: event, error, pending } = useFetch(`/api/events/${route.params.id}`);
 
-definePageMeta({
-  middleware: ["protected"],
-})
-
 onMounted(() => {
   if (event.value && new Date(event.value?.startAt) > new Date()) {
     navigateTo("/")

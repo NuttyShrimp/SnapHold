@@ -1,6 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: false
+  layout: false,
+  middleware: [],
 })
 
 const user = useUser();
@@ -18,7 +19,7 @@ const handleMicrosoftLogin = () => {
 }
 
 onMounted(() => {
-  if (user.value && user.value !== "") {
+  if (user.value) {
     navigateTo("/")
   }
 })

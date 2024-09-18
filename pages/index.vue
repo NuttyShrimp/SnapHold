@@ -6,10 +6,6 @@ const now = new Date();
 const upcomingEvents = computed(() => events.value?.filter(e => new Date(e.startAt) > now) ?? []);
 const activeEvents = computed(() => events.value?.filter(e => new Date(e.endAt) > now && new Date(e.startAt) < now) ?? []);
 const endedEvents = computed(() => events.value?.filter(e => new Date(e.endAt) < now) ?? []);
-
-definePageMeta({
-  middleware: ["protected"]
-})
 </script>
 <template>
   <div class="p-4">
