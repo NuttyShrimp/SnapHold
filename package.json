@@ -13,27 +13,27 @@
   },
   "dependencies": {
     "@lucia-auth/adapter-prisma": "^4.0.1",
-    "@nuxt/image": "^1.7.0",
-    "@nuxt/ui": "^2.17.0",
-    "@prisma/client": "5.12.1",
+    "@nuxt/image": "^1.8.0",
+    "@nuxt/ui": "^2.18.4",
+    "@prisma/client": "5.19.1",
     "@types/uuid": "^10.0.0",
-    "@vite-pwa/nuxt": "^0.9.0",
-    "arctic": "^1.9.1",
-    "dayjs": "^1.11.11",
-    "dayjs-nuxt": "^2.1.9",
+    "@vite-pwa/nuxt": "^0.10.5",
+    "arctic": "^1.9.2",
+    "dayjs": "^1.11.13",
+    "dayjs-nuxt": "^2.1.11",
     "lucia": "^3.2.0",
     "minio": "^8.0.1",
     "oslo": "^1.2.1",
     "uuid": "^10.0.0",
-    "vue": "^3.4.31",
-    "vue-router": "^4.4.0",
+    "vue": "^3.5.6",
+    "vue-router": "^4.4.5",
     "webrtc-adapter": "^9.0.1",
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "nuxt": "^3.12.3",
-    "prisma": "5.12.1",
-    "tsx": "^4.16.2"
+    "nuxt": "^3.13.2",
+    "prisma": "5.19.1",
+    "tsx": "^4.19.1"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
