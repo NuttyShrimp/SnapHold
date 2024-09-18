@@ -31,7 +31,7 @@ export default defineNuxtConfig({
   },
 
   image: {
-    domains: ["minioserver.nuttyshrimp.me"]
+    domains: ["minioserver.lecoutere.dev"]
   },
 
   pwa: {

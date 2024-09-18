@@ -4,7 +4,7 @@ import { v4 } from 'uuid';
 const config = useRuntimeConfig();
 
 export const minioClient = new Minio.Client({
-  endPoint: 'minioserver.nuttyshrimp.me',
+  endPoint: 'minioserver.lecoutere.dev',
   useSSL: true,
   port: 443,
   accessKey: config.minioAccessKey,

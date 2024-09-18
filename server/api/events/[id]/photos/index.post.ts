@@ -51,7 +51,7 @@ export default defineEventHandler(async (event) => {
 
   await prisma.photo.create({
     data: {
-      url: `https://minioserver.nuttyshrimp.me/pov-clone/${uuid}.jpg`,
+      url: `https://minioserver.lecoutere.dev/pov-clone/${uuid}.jpg`,
       event_id: Number(id),
       user_id: event.context.user.id,
     }

@@ -37,7 +37,7 @@ async function main() {
 
   await prisma.photo.create({
     data: {
-      url: "https://minioserver.nuttyshrimp.me/pov-clone/010f5c97-2b5e-498f-a815-13608fab58ff.jpg",
+      url: "https://minioserver.lecoutere.dev/pov-clone/010f5c97-2b5e-498f-a815-13608fab58ff.jpg",
       user_id: "jyqef0q132pi4kn",
       event_id: 2,
     }
@@ -45,7 +45,7 @@ async function main() {
 
   await prisma.photo.create({
     data: {
-      url: "https://minioserver.nuttyshrimp.me/pov-clone/010f5c97-2b5e-498f-a815-13608fab58ff.jpg",
+      url: "https://minioserver.lecoutere.dev/pov-clone/010f5c97-2b5e-498f-a815-13608fab58ff.jpg",
       user_id: "jyqef0q132pi4kn",
       event_id: 2,
     }
@@ -53,42 +53,42 @@ async function main() {
 
   await prisma.photo.create({
     data: {
-      url: "https://minioserver.nuttyshrimp.me/pov-clone/010f5c97-2b5e-498f-a815-13608fab58ff.jpg",
+      url: "https://minioserver.lecoutere.dev/pov-clone/010f5c97-2b5e-498f-a815-13608fab58ff.jpg",
       user_id: "jyqef0q132pi4kn",
       event_id: 2,
     }
   });
   await prisma.photo.create({
     data: {
-      url: "https://minioserver.nuttyshrimp.me/pov-clone/010f5c97-2b5e-498f-a815-13608fab58ff.jpg",
+      url: "https://minioserver.lecoutere.dev/pov-clone/010f5c97-2b5e-498f-a815-13608fab58ff.jpg",
       user_id: "jyqef0q132pi4kn",
       event_id: 2,
     }
   });
   await prisma.photo.create({
     data: {
-      url: "https://minioserver.nuttyshrimp.me/pov-clone/010f5c97-2b5e-498f-a815-13608fab58ff.jpg",
+      url: "https://minioserver.lecoutere.dev/pov-clone/010f5c97-2b5e-498f-a815-13608fab58ff.jpg",
       user_id: "jyqef0q132pi4kn",
       event_id: 2,
     }
   });
   await prisma.photo.create({
     data: {
-      url: "https://minioserver.nuttyshrimp.me/pov-clone/010f5c97-2b5e-498f-a815-13608fab58ff.jpg",
+      url: "https://minioserver.lecoutere.dev/pov-clone/010f5c97-2b5e-498f-a815-13608fab58ff.jpg",
       user_id: "jyqef0q132pi4kn",
       event_id: 2,
     }
   });
   await prisma.photo.create({
     data: {
-      url: "https://minioserver.nuttyshrimp.me/pov-clone/010f5c97-2b5e-498f-a815-13608fab58ff.jpg",
+      url: "https://minioserver.lecoutere.dev/pov-clone/010f5c97-2b5e-498f-a815-13608fab58ff.jpg",
       user_id: "jyqef0q132pi4kn",
       event_id: 2,
     }
   });
   await prisma.photo.create({
     data: {
-      url: "https://minioserver.nuttyshrimp.me/pov-clone/010f5c97-2b5e-498f-a815-13608fab58ff.jpg",
+      url: "https://minioserver.lecoutere.dev/pov-clone/010f5c97-2b5e-498f-a815-13608fab58ff.jpg",
       user_id: "jyqef0q132pi4kn",
       event_id: 2,
     }
