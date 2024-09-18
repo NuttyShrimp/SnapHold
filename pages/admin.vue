@@ -3,19 +3,21 @@ definePageMeta({
   middlewate: ["admin"]
 })
 
-const name = ref('')
-const startAt = ref('')
-const endAt = ref('')
-const photoLimit = ref(25);
+const state = reactive({
+  name: "",
+  startAt: "",
+  endAt: "",
+  photoLimit: 25
+});
 
 const createEvent = async () => {
-  const res = await $fetch("/api/events", {
+  await $fetch("/api/events", {
     method: "POST",
     body: JSON.stringify({
-      name: name.value,
-      startAt: new Date(startAt.value).toISOString(),
-      endAt: new Date(endAt.value).toISOString(),
-      photoLimit: photoLimit.value
+      name: state.name,
+      startAt: new Date(state.startAt).toISOString(),
+      endAt: new Date(state.endAt).toISOString(),
+      photoLimit: state.photoLimit
     }),
     headers: {
       "Content-Type": "application/json"
@@ -26,10 +28,10 @@ const createEvent = async () => {
 <template>
   <div class="container p-4 mx-auto">
     <div class="flex flex-col gap-4 items-center">
-      <UInput v-model="name" color="primary" variant="outline" placeholder="Name" />
-      <input v-model="startAt" type="datetime-local" placeholder="Start at" />
-      <input v-model="endAt" type="datetime-local" placeholder="End at" />
-      <UInput v-model="photoLimit" type="number" min="5" max="50" color="primary" variant="outline"
+      <UInput v-model="state.name" color="primary" variant="outline" placeholder="Name" />
+      <input v-model="state.startAt" type="datetime-local" placeholder="Start at" />
+      <input v-model="state.endAt" type="datetime-local" placeholder="End at" />
+      <UInput v-model="state.photoLimit" type="number" min="5" max="50" color="primary" variant="outline"
         placeholder="Photolimiet" />
       <UButton label="create" @click="createEvent" />
     </div>
